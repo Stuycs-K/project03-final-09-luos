@@ -31,9 +31,9 @@ The players are prompted for a designation at each turn.
 * Shared memory / Allocating memory - To store which inner board the next player can play in
   * Two ints: Row and column
 * File management - To change and store board data
-  * Ints: 0 = Unfilled, 1 = Player 1, and 2 = Player 2.
-  * Inner board: 9 lines of 9 ints
-  * Outer board: 3 lines of 3 ints
+  * Structs of char designation and int player marker
+  * Inner board: 9 lines of 9 structs
+  * Outer board: 3 lines of 3 structs
 * Processes - To split the management of inner and outer boards
   * Outer board program: Setup, display, inner board selection using shared memory
   * Forked inner board program: Player prompts, data setting, win determination
