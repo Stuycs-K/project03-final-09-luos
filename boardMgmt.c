@@ -1,4 +1,14 @@
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "boardMgmt.h"
+
+#define SMALL 3
+#define LARGE 9
 
 int update_data(char *dat_path) {
   // read_data(dat_path);
@@ -33,33 +43,6 @@ int update_data(char *dat_path) {
 }
 
 
-int add_data(char *dat_path) {
-  // char line[LINE_SIZE];
-  // printf("Enter [year] [pop] [boro]: ");
-  // if (fgets(line, LINE_SIZE, stdin) == NULL) {
-  //   printf("%s\n",strerror(errno));
-  //   return errno;
-  // }
-  // struct pop_entry entry;
-  // sscanf(line, "%d %d %s", &(entry.year), &(entry.population), entry.boro);
-  //
-  // int wT = open(dat_path, O_WRONLY | O_APPEND | O_CREAT, 0650);
-  // if (wT == -1) {
-  //   printf("%s\n",strerror(errno));
-  //   return errno;
-  // }
-  //
-  // int bytes = write(wT, &entry, sizeof(struct pop_entry));
-  // if (bytes == -1) {
-  //   printf("%s\n",strerror(errno));
-  //   return errno;
-  // }
-
-  printf("Done!\n");
-  return errno;
-}
-
-
 int read_data(char *dat_path) {
   int fd = open(dat_path, O_RDONLY);
 
@@ -79,4 +62,19 @@ int read_data(char *dat_path) {
   }
 
   return errno;
+}
+
+
+void setup() {
+  // Create the dat file
+  int fd = open("board.dat", O_RDWR, 650);
+
+  for (int i = 0; i < SMALL; i++) {
+    for (int j = 0; j < SMALL; j++) {
+      struct cell;
+      // deal with designation
+      cell.marker = 0;
+    }
+  }
+
 }

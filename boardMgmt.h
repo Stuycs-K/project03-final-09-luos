@@ -5,6 +5,7 @@ struct cell {
   int marker;
 };
 int update_data(char *dat_path);
-int add_data(char *dat_path);
 int read_data(char *dat_path);
+int read_csv(char *csv_path, char *dat_path);
+void setup();
 #endif
