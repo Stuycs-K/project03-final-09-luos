@@ -63,20 +63,20 @@ int add_data(char *dat_path) {
 int read_data(char *dat_path) {
   int fd = open(dat_path, O_RDONLY);
 
-  // struct stat sB;
-  // stat(dat_path, &sB);
-  // int SIZE = sB.st_size / sizeof(struct pop_entry);
-  //
-  // struct pop_entry entries[SIZE];
-  // int bytes;
-  // for (int i = 0; i < SIZE; i++) {
-  //   bytes = read(fd, &entries[i], sizeof(struct pop_entry));
-  //   if (bytes == -1) {
-  //     printf("%s\n",strerror(errno));
-  //     return errno;
-  //   }
-  //   printf("%d: year: %d\t\tboro: %s\t\t\tpop: %d\n", i, entries[i].year, entries[i].boro, entries[i].population);
-  // }
+  struct stat sB;
+  stat(dat_path, &sB);
+  int SIZE = sB.st_size / sizeof(struct cell);
+
+  struct cell entries[SIZE];
+  int bytes;
+  for (int i = 0; i < SIZE; i++) {
+    bytes = read(fd, &entries[i], sizeof(struct cell));
+    if (bytes == -1) {
+      printf("%s\n",strerror(errno));
+      return errno;
+    }
+    printf("%s %d\n", entries[i].designation, entries[i].marker);
+  }
 
   return errno;
 }
