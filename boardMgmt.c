@@ -65,15 +65,15 @@ int read_data(char *dat_path) {
 }
 
 
-void setup() {
+void setupBoard() {
   // Create the dat file
   int fd = open("board.dat", O_RDWR, 650);
 
   for (int i = 0; i < SMALL; i++) {
     for (int j = 0; j < SMALL; j++) {
-      struct cell;
+      struct cell c;
       // deal with designation
-      cell.marker = 0;
+      c.marker = 0;
     }
   }
 
