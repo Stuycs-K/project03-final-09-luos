@@ -50,3 +50,4 @@ NORMAL PHASE
 ULTIMATE PHASE
 * Wed 01/15 - Forking for inner board
 * Fri 01/17 - Inner-outer communication via shared memory
+* Mon 01/21 - Presentation materials
