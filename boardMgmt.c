@@ -45,6 +45,10 @@ int update_data(char *dat_path) {
 
 int read_data(char *dat_path) {
   int fd = open(dat_path, O_RDONLY);
+  if (fd < 0) {
+    perror("Something went wrong!");
+    exit(errno);
+  }
 
   struct stat sB;
   stat(dat_path, &sB);
@@ -67,14 +71,20 @@ int read_data(char *dat_path) {
 
 void setupBoard() {
   // Create the dat file
-  int fd = open("board.dat", O_RDWR, 650);
+  int fd = open("board.dat", O_WRONLY, 650);
+  if (fd < 0) {
+    perror("Something went wrong!");
+    exit(errno);
+  }
 
+  int bytes;
   for (int i = 0; i < SMALL; i++) {
     for (int j = 0; j < SMALL; j++) {
       struct cell c;
-      // deal with designation
+      c.r = i;
+      c.c = j;
       c.marker = 0;
+      bytes = write(fd, c, sizeof(struct cell));
     }
   }
-
 }
